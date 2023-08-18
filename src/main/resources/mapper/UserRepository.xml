@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mysql_demo.mapper.UserRepository">
+    
+    <select id="list" resultType="com.example.mysql_demo.entity.User">
+        SELECT * FROM user;
+    </select>
+    
+    <select id="findById" resultType="com.example.mysql_demo.entity.User">
+        SELECT * FROM user WHERE id = #{id};
+    </select>
+    
+    <select id="findByIdWithRole" resultType="com.example.mysql_demo.mapper.model.UserWithRole">
+        SELECT
+            u.id AS userId,
+            u.name AS userName,
+            u.sex AS sex,
+            u.birthday AS birthday,
+            r.id AS roleId,
+            r.name AS roleName,
+            r.key AS roleKey
+        FROM user u
+        JOIN user_role ur ON u.id = ur.userId
+        JOIN role r ON ur.roleId = r.id
+        WHERE u.id = #{id};
+    </select>
+    
+</mapper>

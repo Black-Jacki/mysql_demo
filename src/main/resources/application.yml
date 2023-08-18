@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  
+spring:
+  application:
+    name: mysql_demo
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db
+    username: root
+    password: RootMysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.example.mysql_demo.entity
